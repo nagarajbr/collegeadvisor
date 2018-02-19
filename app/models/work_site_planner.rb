@@ -1,0 +1,2 @@
+class WorkSitePlanner < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class EducationPlanner < ApplicationRecord
+end

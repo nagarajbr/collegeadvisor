@@ -1,0 +1,47 @@
+
+<fieldset>
+  <section class="solidbody">
+
+<!-- <div class="col-md-3 col-md-offset-9"><%#= link_to new_education_planner_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    Career & Technical Education
+  <%# end %></div> -->
+
+<legend><%= set_subheader("Career & Technical Education Activities") %> </legend>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover"> <br>
+    <thead>
+      <tr>
+            <th>Activity Period</th>
+            <th>School name</th>
+            <th>Point of contact</th>
+            <th>Working Towards</th>
+            <th>Major</th>
+            <th>Planned hours per month</th>
+            <th>Outcome</th>
+            <th>Action</th>
+        <!-- <th></th>
+        <th></th> -->
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @education_planners) do |education_planner| %>
+            <td><%= education_planner.start.to_date.to_s + " To "+ (education_planner.end.to_date - 1.day).to_s %></td>
+            <td><%= education_planner.name %></td>
+            <td><%= education_planner.contact %></td>
+            <td><%= education_planner.occupation_program %></td>
+            <td><%= education_planner.position_major %></td>
+            <td><%= education_planner.hours %></td>
+            <td><%= education_planner.outcome %></td>
+           <!--  <td><%#= link_to 'Show', education_planner %></td> -->
+        <td><%= link_to 'Edit', edit_education_planner_path(education_planner) %></td>
+        <!-- <td><%#= link_to 'Destroy', education_planner, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+</section>
+</fieldset>

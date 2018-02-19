@@ -1,0 +1,1 @@
+json.array! @work_search_blogs, partial: 'work_search_blogs/work_search_blog', as: :work_search_blog

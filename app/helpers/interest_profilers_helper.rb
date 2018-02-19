@@ -1,0 +1,2 @@
+module InterestProfilersHelper
+end

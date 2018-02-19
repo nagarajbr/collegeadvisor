@@ -1,0 +1,27 @@
+<%= simple_form_for @event, remote: true do |f| %>
+  <div class="form-inputs">
+    <%= f.input :title , label: "Activity Type", as: :select, collection: [['Work Experience','Work Experience']] ,selected: 'Job Search' ,disabled: true %>
+    <%= f.input :date_range ,  label: "Activity Period 1" , input_html: { class: "form-control input-sm date-range-picker" } , disabled: true %>
+    <%= f.input :name , label: "Work Site Name" , disabled: true %>
+    <%= f.input :contact , label: "Work Site Contact" , disabled: true %>
+    <%= f.input :hours , label: "Hours Spent"  , disabled: true%>
+    <%= f.input :occupation_program , label: "Occupation"  , disabled: true%>
+    <%= f.input :position_major , label: "Position"  , disabled: true%>
+    <%= f.input :outcome , label: "Outcome" , disabled: true%>
+    <%= f.input :month_completed , label: "Month Completed", as: :select, collection: @event.month_to_complete.map{ |k,v| k if v == 'No' }  %> </div>
+
+  <div class="form-actions">
+     <%= link_to career_plan_outcomes_path, class: 'btn btn-default' do %>
+          <span class="glyphicon glyphicon-list-alt"></span>
+          Back
+        <% end %>
+    <%= f.button  :submit , ( f.object.new_record? ? "Create" : "Update") %>
+   
+    <%= link_to 'Delete',
+                @event,
+                method: :delete,
+                class: 'btn btn-danger',
+                data: { confirm: 'Are you sure?' },
+                remote: true unless @event.new_record? %>
+  </div>
+<% end %>

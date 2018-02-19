@@ -1,0 +1,50 @@
+
+<fieldset>
+  <section class="solidbody">
+
+<legend> <%= set_subheader("Work Experience Activities") %> </legend><br>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Activity Month</th>
+            <th>Work site name</th>
+            <th>Point of contact</th>
+            <th>Occupation</th>
+            <th>Position type</th>
+            <th>Salary per hour</th>
+            <th>Working hours per week</th>
+            <th>Completed</th>
+            <th>Outcome</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @work_site_planners) do |work_site_planner| %>
+            <td><%= work_site_planner.activity_date %></td>
+            <td><%= work_site_planner.work_site_name %></td>
+            <td><%= work_site_planner.point_of_contact %></td>
+            <td><%= work_site_planner.occupation %></td>
+            <td><%= work_site_planner.position_type.titleize unless work_site_planner.position_type.nil? %></td>
+            <td><%= work_site_planner.salary_per_hour %></td>
+            <td><%= work_site_planner.working_hours_per_week %></td>
+            <td><%= work_site_planner.completed.titleize unless work_site_planner.completed.nil? %></td>
+            <td><%= work_site_planner.outcome %></td>
+            <td><%= link_to 'Show', work_site_planner %></td>
+        <td><%= link_to 'Edit', edit_work_site_planner_path(work_site_planner) %></td>
+        <td><%= link_to 'Destroy', work_site_planner, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<div class="page-header">
+  <%= link_to new_work_site_planner_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    Work Experience Activity
+  <% end %>
+  </div>
+  </section>
+</fieldset>

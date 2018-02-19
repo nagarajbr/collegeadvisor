@@ -1,0 +1,17 @@
+<%= form_for(@agency_provider) do |f| %>
+  <% if @agency_provider.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@agency_provider.errors.count, "error") %> prohibited this agency_provider from being saved:</h2>
+
+      <ul>
+      <% @agency_provider.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

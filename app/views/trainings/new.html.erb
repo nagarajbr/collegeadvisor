@@ -1,0 +1,17 @@
+<div class="page-header">
+  <%= link_to interest_profilers_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <h1>Search by Training</h1>
+</div>
+
+<div class="row">
+   <%= form_tag  training_path("All") ,:method => :get do  %>
+        <%= label_tag "What" %>
+        <%= text_field_tag :keyword %>
+        <%= label_tag "Where" %>
+        <%= text_field_tag :location %>
+    <%= submit_tag "Submit", class: "btn btn-success btn-lg"%>
+    <% end %>
+</div>

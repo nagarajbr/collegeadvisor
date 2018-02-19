@@ -1,0 +1,35 @@
+<div class="page-header">
+  <%= link_to new_reminder_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Reminder
+  <% end %>
+  <h1>Listing reminders</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Jobseeker</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Type</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @reminders) do |reminder| %>
+            <td><%= reminder.jobseeker_id %></td>
+            <td><%= reminder.description %></td>
+            <td><%= reminder.status %></td>
+            <td><%= reminder.type %></td>
+            <td><%= link_to 'Show', reminder %></td>
+        <td><%= link_to 'Edit', edit_reminder_path(reminder) %></td>
+        <td><%= link_to 'Destroy', reminder, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

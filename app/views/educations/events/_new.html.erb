@@ -1,0 +1,110 @@
+
+<div class="modal fade" id="new_event">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Create New Activity</h4>
+      </div>
+      <div class="modal-body">
+        <%= render 'form', event: @event %>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+   $(function() {
+   var selectedValue = $('#event_title').val();
+
+    if(selectedValue== 'Job Search')
+    {
+      $("label[for = event_name]").text('Work Site Name')
+      $("label[for = event_contact]").text('Person Contacted')
+      $("label[for = event_hours]").text('Hours Spent')
+      $("label[for = event_occupation_program]").hide()
+      $('#event_occupation_program').hide();
+      $("label[for = event_position_major]").hide()
+      $('#event_position_major').hide();
+
+    }
+
+    if (selectedValue== 'Work Experience'){
+
+      $("label[for = event_name]").text('Work Site Name')
+      $("label[for = event_contact]").text('Work Site Contact')
+      $("label[for = event_hours]").text('Working Hours Per Month')
+      $("label[for = event_occupation_program]").text('Occupation')
+      $("label[for = event_position_major]").text('Position Type')
+      $("label[for = event_occupation_program]").show()
+      $('#event_occupation_program').show();
+      $("label[for = event_position_major]").show()
+      $('#event_position_major').show();
+
+    }
+
+    if (selectedValue== 'Career & Technical Training') {
+
+      $("label[for = event_name]").text('School Name')
+      $("label[for = event_contact]").text('Point of Contact')
+      $("label[for = event_hours]").text('Planned Hours Per Month')
+      $("label[for = event_occupation_program]").text('Working Towards')
+      $("label[for = event_position_major]").text('Major')
+      $("label[for = event_occupation_program]").show()
+      $('#event_occupation_program').show();
+      $("label[for = event_position_major]").show()
+      $('#event_position_major').show();
+
+    }
+
+     });
+   $('#event_title').on('load change',function(e){
+    var selectedValue = $(this).val();
+
+    if(selectedValue== 'Job Search')
+    {
+      $("label[for = event_name]").text('Work Site Name')
+      $("label[for = event_contact]").text('Person Contacted')
+      $("label[for = event_hours]").text('Hours Spent')
+      $("label[for = event_occupation_program]").hide()
+      $('#event_occupation_program').hide();
+      $("label[for = event_position_major]").hide()
+      $('#event_position_major').hide();
+
+    }
+
+    if (selectedValue== 'Work Experience'){
+
+      $("label[for = event_name]").text('Work Site Name')
+      $("label[for = event_contact]").text('Work Site Contact')
+      $("label[for = event_hours]").text('Working Hours Per Month')
+      $("label[for = event_occupation_program]").text('Occupation')
+      $("label[for = event_position_major]").text('Position Type')
+      $("label[for = event_occupation_program]").show()
+      $('#event_occupation_program').show();
+      $("label[for = event_position_major]").show()
+      $('#event_position_major').show();
+
+    }
+
+    if (selectedValue== 'Career & Technical Training') {
+
+      $("label[for = event_name]").text('School Name')
+      $("label[for = event_contact]").text('Point of Contact')
+      $("label[for = event_hours]").text('Planned Hours Per Month')
+      $("label[for = event_occupation_program]").text('Working Towards')
+      $("label[for = event_position_major]").text('Major')
+      $("label[for = event_occupation_program]").show()
+      $('#event_occupation_program').show();
+      $("label[for = event_position_major]").show()
+      $('#event_position_major').show();
+
+    }
+
+});
+
+</script>
+
+
+

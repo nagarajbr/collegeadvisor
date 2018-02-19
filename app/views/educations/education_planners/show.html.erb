@@ -1,0 +1,45 @@
+
+<fieldset>
+  <section class="solidbody">
+
+<legend> <%= set_subheader("Career & Technical Education Activity") %> </legend><br>
+<dl class="dl-horizontal">
+
+  <dt>Activity Month:</dt>
+  <dd><%= @education_planner.activity_date %></dd>
+
+  <dt>School name:</dt>
+  <dd><%= @education_planner.school_name %></dd>
+
+  <dt>Point of contact:</dt>
+  <dd><%= @education_planner.point_of_contact %></dd>
+
+  <dt>Program:</dt>
+  <dd><%= @education_planner.program %></dd>
+
+  <dt>Major:</dt>
+  <dd><%= @education_planner.major %></dd>
+
+  <dt>Class hours per week:</dt>
+  <dd><%= @education_planner.class_hours_per_week %></dd>
+
+  <dt>Completed:</dt>
+  <dd><%= @education_planner.completed.titleize unless @education_planner.completed.nil? %></dd>
+
+  <dt>Outcome:</dt>
+  <dd><%= @education_planner.outcome %></dd>
+
+</dl>
+<div class="page-header">
+
+  <%= link_to edit_education_planner_path(@education_planner), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <%= link_to career_plan_outcomes_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+</div>
+</section>
+</fieldset>

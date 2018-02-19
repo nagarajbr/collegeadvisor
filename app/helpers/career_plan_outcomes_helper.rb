@@ -1,0 +1,2 @@
+module CareerPlanOutcomesHelper
+end

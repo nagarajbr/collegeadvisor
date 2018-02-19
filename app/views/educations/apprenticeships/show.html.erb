@@ -1,0 +1,45 @@
+<div class="page-header">
+
+ <% if params["keyword"].present? %>
+  <% else %>
+	 <%= link_to interest_profilers_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+ <% end %>
+</div>
+<fieldset>
+  <section class="solidbody">
+<% if params["keyword"].present? %>
+   <legend> <%= set_subheader("Apprenticeship Listings For #{params["keyword"]}") %> </legend><br>
+<% else %>
+   <legend> <%= set_subheader("Apprenticeship Listings For #{params[:id]}") %> </legend><br>
+<% end %>
+<table class="table table-striped table-bordered">
+        <thead>
+              <tr>
+              <th> Title </th>
+              <th> Sponsor Name </th>
+              <th> Address </th>
+              <th> Phone </th>
+              <th> Referral </th>
+            </tr>
+            </thead>
+          <tbody>
+            <% if @apprenticeship_listings_array.present? %>
+               <% @apprenticeship_listings_array.each do |key,val| %>
+                <tr>
+                <td><%= key[:title] %></td>
+                <td> <%= key[:sponsor] %></td>
+                <td> <%= key[:address] %></td>
+                <td> <%= key[:phone] %></td>
+                <td> <%= link_to "Referral", "#" ,id: "hyperlink" %></td>
+
+              </tr>
+            <% end %>
+            <% end %>
+        </tbody>
+      </table>
+
+         </section>
+</fieldset>

@@ -1,0 +1,43 @@
+<div class="page-header">
+  <%= link_to new_education_planner_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Education planner
+  <% end %>
+  <h1>Listing education_planners</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Activity</th>
+            <th>School name</th>
+            <th>Point of contact</th>
+            <th>Program</th>
+            <th>Major</th>
+            <th>Class hours per week</th>
+            <th>Completed</th>
+            <th>Outcome</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @education_planners) do |education_planner| %>
+            <td><%= education_planner.activity %></td>
+            <td><%= education_planner.school_name %></td>
+            <td><%= education_planner.point_of_contact %></td>
+            <td><%= education_planner.program %></td>
+            <td><%= education_planner.major %></td>
+            <td><%= education_planner.class_hours_per_week %></td>
+            <td><%= education_planner.completed %></td>
+            <td><%= education_planner.outcome %></td>
+            <td><%= link_to 'Show', education_planner %></td>
+        <td><%= link_to 'Edit', edit_education_planner_path(education_planner) %></td>
+        <td><%= link_to 'Destroy', education_planner, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

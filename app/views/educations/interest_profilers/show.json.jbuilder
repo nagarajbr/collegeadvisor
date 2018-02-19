@@ -1,0 +1,1 @@
+json.partial! "interest_profilers/interest_profiler", interest_profiler: @interest_profiler

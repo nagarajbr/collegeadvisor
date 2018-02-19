@@ -1,0 +1,47 @@
+<div class="page-header">
+
+
+<div class="row">
+		<div class="col-md-7">
+			<%= label_tag :questions, "Questions" %>
+        </div>
+</div>
+
+<%= form_tag interest_profilers_path, method: :post do %>
+<table class="table table-striped table-bordered">
+				<thead>
+					    <tr>
+							<th width="5%"> </th>
+							<% ["Dislike", "Not Sure" ,"Like"].each do |key| %>
+                            <th width="5%"> <%= key %> </th>
+							<% end %>
+							<th width="45%">  </th>
+						</tr>
+					  </thead>
+			    <tbody>
+			    	<% count_main = 1 %>
+			    	<% @questions.each do |key,val| %>
+			    		<tr>
+							<td> <%= count_main %></td>
+							<% count = 1 %>
+							<% ["Dislike", "Not Sure" ,"Like"].each do |key1| %>
+							<% if count == 3 %>
+                            <td> <%= radio_button_tag(count_main, count,checked = true) %></td>
+                            <% else %>
+                            <td> <%= radio_button_tag(count_main , count) %></td>
+                            <% end %>
+                            <% count += 1 %>
+							<% end %>
+
+							<td> <%= key["interest"] %></td>
+
+						</tr>
+						<% count_main += 1 %>
+					<% end %>
+				</tbody>
+			</table>
+
+
+<%= submit_tag "Submit", class: "btn btn-success btn-lg"%>
+<% end %>
+</div>

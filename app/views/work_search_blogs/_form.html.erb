@@ -1,0 +1,94 @@
+<%= form_for(@work_search_blog, html: { class: "form-horizontal", role: "form" }) do |f| %>
+  <% if @work_search_blog.errors.any? %>
+    <div class="alert alert-danger alert-dismissable" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <h4><%= pluralize(@work_search_blog.errors.count, "error") %> prohibited this work blog from being saved:</h4>
+
+      <ul>
+      <% @work_search_blog.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+  <div class="form-group">
+    <%= f.label :activity_date, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.date_select :activity_date, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :hours_spent, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.number_field :hours_spent, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :work_site_name, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :work_site_name, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :address1, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :address1, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :address2, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :address2, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :city, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :city, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :state, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :state, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :zip, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.number_field :zip, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :person_contacted, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :person_contacted, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :contact_outcome, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :contact_outcome, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :comments, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_area :comments, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :job_seeker_id, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.number_field :job_seeker_id, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

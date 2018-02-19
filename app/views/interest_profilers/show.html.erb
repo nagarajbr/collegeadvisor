@@ -1,0 +1,47 @@
+<div class="page-header">
+
+
+<div class="row">
+		<div class="col-md-7">
+			<%= label_tag :questions, "Questions" %>
+        </div>
+</div>
+
+<%= form_tag interest_profilers_path, method: :post do %>
+<%#= form_tag ('/interest_profilers')  do %>
+
+<table class="table table-striped table-bordered">
+				<thead>
+					    <tr>
+							<th width="5%"> </th>
+							<% @questions["questions"]["answer_options"]["answer_option"].each do |key,val| %>
+                            <th width="5%"> <%= key %> </th>
+							<% end %>
+							<th width="45%">  </th>
+						</tr>
+					  </thead>
+			    <tbody>
+			    	<% @questions["questions"]["question"].each do |key,val| %>
+			    		<tr>
+							<td> <%= key["index"] %></td>
+							<% count = 1 %>
+							<% @questions["questions"]["answer_options"]["answer_option"].each do |key1,val1| %>
+							<% if count == 5 %>
+                            <td> <%= radio_button_tag(key["index"] , count) %></td>
+                            <% else %>
+                            <td> <%= radio_button_tag(key["index"] , count,checked = true) %></td>
+                            <% end %>
+                            <% count += 1 %>
+							<% end %>
+
+							<td> <%= key["text"] %></td>
+
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+
+</div>
+<%= submit_tag "Submit", class: "btn btn-success btn-lg"%>
+
+<% end %>

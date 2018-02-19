@@ -1,0 +1,7 @@
+<div class="row">
+   <%= form_tag job_search_path("Nurse")  ,:method => :get do  %>
+       <%= text_field "search" ,"keyword" %>
+
+    <%= submit_tag "Submit", class: "btn btn-success btn-lg"%>
+    <% end %>
+</div>

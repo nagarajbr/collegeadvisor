@@ -1,0 +1,1 @@
+json.array! @interest_profilers, partial: 'interest_profilers/interest_profiler', as: :interest_profiler

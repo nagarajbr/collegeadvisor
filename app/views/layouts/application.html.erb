@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <!-- <body> -->
+   
+      <%= render "layouts/navbar" %>
+   
+
+    <div class='container'>
+      <% flash.each do |name, msg| %>
+
+    <div >
+         <% if name == "alert" %>
+          <%= content_tag :div, msg, class: "alert alert-warning" %>
+          <% elsif name ==  "error" %>
+          <%= content_tag :div, msg, class: "alert alert-danger" %>
+          <% else  %>
+          <%= content_tag :div, msg, class: "alert alert-success" %>
+        <% end %>
+    </div>
+
+<% end %>
+
+      <%= yield %>
+      <div id='remote_container'></div>
+    </div>
+  <!-- </body> -->
+
+  <br>
+  <br>
+  <br>
+  <br>
+ <footer class="footer">
+   <%#= render "layouts/footer" %>
+    </footer>
+</html>

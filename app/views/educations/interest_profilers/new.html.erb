@@ -1,0 +1,25 @@
+<fieldset>
+  <section class="solidbody">
+
+<legend> <%= set_subheader("Search by Occupation") %> </legend><br>
+
+
+<div class="row">
+   <%= form_tag  job_search_path("All") ,:method => :get do  %>
+        <div>
+        <%= label_tag "What" %>
+        <%= text_field_tag :keyword ,'', :required => true %>
+      </div>
+      <br>
+      <div>
+         <%= label_tag "Where ( Ex: Little Rock, AR)" %>
+        <%= text_field_tag :location, '', :required => true %>
+      </div>
+
+        <br>
+    <%= submit_tag "Submit", class: "btn btn-success btn-lg"%>
+     <% end %>
+</div>
+
+ </section>
+</fieldset>

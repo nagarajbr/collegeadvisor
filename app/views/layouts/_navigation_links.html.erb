@@ -1,0 +1,93 @@
+<%# add navigation links to this file %>
+
+
+ <!-- Collect the nav links, forms, and other content for toggling -->
+ <% if user_signed_in? %>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-left">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Students<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+           <li><%= link_to 'Students', clients_path %></li>
+            <li><%= link_to 'Address', addresses_path %></li>
+            <li><%= link_to 'Education', educations_path %></li>
+            <li><%#= link_to 'Work Experience', employments_path %></li>
+          </ul>
+        </li>
+      </ul>
+      <!-- <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">To-do List<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+             <li><%#= link_to 'Career Planner', survey_path(:survey_1) %></li>
+             <li><%#= link_to 'Monthly Activity Planner', career_plan_outcomes_path %></li>
+             <li><%#= link_to 'Upload Documents', documents_path %></li>
+          </ul>
+        </li>
+      </ul> -->
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">Search for Jobs by<span class="caret"></span></a> -->
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Interests<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+           <li><%#= link_to 'My Interests', interest_profiler_path(1) %></li>
+            <li><%= link_to 'My Interests', question_path(:question_1_10) %></li>
+      			<li><%#= link_to 'Keyword / Occupation', new_interest_profiler_path %></li>
+      </ul>
+        </li>
+      </ul>
+      <!-- <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Search for Training Opportunities by<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+           <li><%#= link_to 'My Interests', question_path(:question_1_10) %></li>
+			     <li><%#= link_to 'Keyword / Occupation', new_training_path %></li>
+
+          </ul>
+        </li>
+      </ul> -->
+      <!-- <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Search for Apprenticeship by<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+          <li><%#= link_to 'My Interests', question_path(:question_1_10) %></li>
+           <li><%#= link_to 'Keyword / Occupation', new_apprenticeship_path %></li>
+          </ul>
+        </li>
+      </ul> -->
+         <!-- <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Survey Management<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+             <li><%#= link_to 'Record Monthly Activities', work_search_blogs_path %></li>
+             <li><%#= link_to 'Create Intrest Profiler Survey', edit_education_path(1) %></li>
+             <li><%#= link_to 'Create Occupations Survey', clients_path %></li>
+             <li><%#= link_to 'Create Job List Survey', clients_path %></li>
+             <li><%#= link_to ' Weekly Monitoring Survey', clients_path %></li>
+             <li><%#= link_to ' Monthly Monitoring Survey', clients_path %></li>
+             <li><%#= link_to 'Send Survey to contacts', edit_education_path(3) %></li>
+             <li><%#= link_to 'Upload contacts', edit_education_path(2) %></li>
+          </ul>
+        </li>
+      </ul>
+        </li>
+      </ul> -->
+      
+    <% end %>
+
+
+    <ul class="nav navbar-nav navbar-right ">
+          <% if user_signed_in? %>
+            <li><%= link_to "My Account", edit_user_registration_path %></li>
+            <li><%= link_to "Log Out", destroy_user_session_path, :method => :delete%></li>
+            
+          <% else %>
+          <li><%= link_to "Login",  new_user_session_path %></li>
+          <li><%= link_to "Sign Up",  new_user_registration_path %></li>
+          <% end %>
+          
+         <!--  <li><a class="nav-link" href= "/">Back</a></li> -->
+
+        </ul>
+
+    </div><!-- /.navbar-collapse -->

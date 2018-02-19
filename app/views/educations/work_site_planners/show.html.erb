@@ -1,0 +1,49 @@
+
+<fieldset>
+  <section class="solidbody">
+
+<legend> <%= set_subheader("Work Experience Activity") %> </legend><br>
+<dl class="dl-horizontal">
+
+  <dt>Activity Month:</dt>
+  <dd><%= @work_site_planner.activity_date %></dd>
+
+  <dt>Work site name:</dt>
+  <dd><%= @work_site_planner.work_site_name %></dd>
+
+  <dt>Work site contact:</dt>
+  <dd><%= @work_site_planner.point_of_contact %></dd>
+
+  <dt>Occupation:</dt>
+  <dd><%= @work_site_planner.occupation %></dd>
+
+  <dt>Employment Status:</dt>
+  <dd><%= @work_site_planner.position_type.titleize unless @work_site_planner.position_type.nil? %></dd>
+
+  <dt>Salary per hour:</dt>
+  <dd><%= @work_site_planner.salary_per_hour %></dd>
+
+  <dt>Working hours per week:</dt>
+  <dd><%= @work_site_planner.working_hours_per_week %></dd>
+
+  <dt>Monthly Activity status:</dt>
+  <dd><%= @work_site_planner.completed.titleize unless @work_site_planner.completed.nil? %></dd>
+
+  <dt>Outcome:</dt>
+  <dd><%= @work_site_planner.outcome %></dd>
+
+</dl>
+<div>
+  <%= link_to edit_work_site_planner_path(@work_site_planner), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <%= link_to career_plan_outcomes_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+
+
+</div>
+</section>
+</fieldset>

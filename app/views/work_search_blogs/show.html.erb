@@ -1,0 +1,50 @@
+<div class="page-header">
+  <%= link_to work_search_blogs_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to edit_work_search_blog_path(@work_search_blog), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <h1>Work Blog</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Activity date:</dt>
+  <dd><%= @work_search_blog.activity_date %></dd>
+
+  <dt>Hours spent:</dt>
+  <dd><%= @work_search_blog.hours_spent %></dd>
+
+  <dt>Work site name:</dt>
+  <dd><%= @work_search_blog.work_site_name %></dd>
+
+  <dt>Address1:</dt>
+  <dd><%= @work_search_blog.address1 %></dd>
+
+  <dt>Address2:</dt>
+  <dd><%= @work_search_blog.address2 %></dd>
+
+  <dt>City:</dt>
+  <dd><%= @work_search_blog.city %></dd>
+
+  <dt>State:</dt>
+  <dd><%= @work_search_blog.state %></dd>
+
+  <dt>Zip:</dt>
+  <dd><%= @work_search_blog.zip %></dd>
+
+  <dt>Person contacted:</dt>
+  <dd><%= @work_search_blog.person_contacted %></dd>
+
+  <dt>Contact outcome:</dt>
+  <dd><%= @work_search_blog.contact_outcome %></dd>
+
+  <dt>Comments:</dt>
+  <dd><%= @work_search_blog.comments %></dd>
+
+  <dt>Job seeker:</dt>
+  <dd><%= @work_search_blog.job_seeker_id %></dd>
+
+</dl>

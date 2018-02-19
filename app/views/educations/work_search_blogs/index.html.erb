@@ -1,0 +1,59 @@
+
+
+<fieldset>
+  <section class="solidbody">
+
+<legend> <%= set_subheader("Job Search Activities") %> </legend><br>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover ">
+    <thead>
+      <tr>
+            <th>Activity Month</th>
+            <th>Work site name</th>
+             <th>Hours spent</th>
+            <th>Address1</th>
+            <th>Address2</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip</th>
+            <th>Person contacted</th>
+            <th>Contact outcome</th>
+            <th>Comments</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @work_search_blogs) do |work_search_blog| %>
+            <td><%= work_search_blog.activity_date %></td>
+            <td><%= work_search_blog.work_site_name %></td>
+            <td><%= work_search_blog.hours_spent %></td>
+            <td><%= work_search_blog.address1 %></td>
+            <td><%= work_search_blog.address2 %></td>
+            <td><%= work_search_blog.city %></td>
+            <td><%= work_search_blog.state %></td>
+            <td><%= work_search_blog.zip %></td>
+            <td><%= work_search_blog.person_contacted %></td>
+            <td><%= work_search_blog.contact_outcome %></td>
+            <td><%= work_search_blog.comments %></td>
+            <td><%= link_to 'Show', work_search_blog %></td>
+        <td><%= link_to 'Edit', edit_work_search_blog_path(work_search_blog) %></td>
+        <td><%= link_to 'Destroy', work_search_blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<div class="page-header">
+  <%= link_to new_work_search_blog_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    Job Search Activity
+  <% end %>
+  <h1></h1>
+</div>
+</section>
+</fieldset>
+
+

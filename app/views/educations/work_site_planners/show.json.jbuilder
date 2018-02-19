@@ -1,0 +1,1 @@
+json.partial! "work_site_planners/work_site_planner", work_site_planner: @work_site_planner

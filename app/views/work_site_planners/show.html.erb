@@ -1,0 +1,41 @@
+<div class="page-header">
+  <%= link_to work_site_planners_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to edit_work_site_planner_path(@work_site_planner), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <h1>Show work_site_planner</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Activity:</dt>
+  <dd><%= @work_site_planner.activity %></dd>
+
+  <dt>Work site name:</dt>
+  <dd><%= @work_site_planner.work_site_name %></dd>
+
+  <dt>Point of contact:</dt>
+  <dd><%= @work_site_planner.point_of_contact %></dd>
+
+  <dt>Occupation:</dt>
+  <dd><%= @work_site_planner.occupation %></dd>
+
+  <dt>Position type:</dt>
+  <dd><%= @work_site_planner.position_type %></dd>
+
+  <dt>Salary per hour:</dt>
+  <dd><%= @work_site_planner.salary_per_hour %></dd>
+
+  <dt>Working hours per week:</dt>
+  <dd><%= @work_site_planner.working_hours_per_week %></dd>
+
+  <dt>Completed:</dt>
+  <dd><%= @work_site_planner.completed %></dd>
+
+  <dt>Outcome:</dt>
+  <dd><%= @work_site_planner.outcome %></dd>
+
+</dl>
