@@ -1,5 +1,5 @@
 class EducationsController < ApplicationController
-  before_action :set_education, only: [:show,  :update, :destroy]
+  before_action :set_education, only: [:show, :edit, :update, :destroy]
 
   # GET /educations
   # GET /educations.json
@@ -14,41 +14,19 @@ class EducationsController < ApplicationController
 
   # GET /educations/new
   def new
-
-     @client = Client.find(1)
-
-    if @client.present?
-     @education  = @client.education.new
-   end
-
+     @education  = Education.new
   end
 
   # GET /educations/1/edit
   def edit
-    case params[:id].to_i
-       when 1 # create survey
-            response = CareerAdvisorWebServices.new("admin","nagashri1").create_survey("Intrest Profiler")
-            @survey = response
-
-       when 2 # upload contacts
-            @cl =  Client.connection.execute("select email,first_name,last_name from caddy_clients").to_json
-            response = CareerAdvisorWebServices.new("admin","nagashri1").create_contacts(@cl)
-            @survey = response
-
-        when 3 # send surveys
-            @cl =  Client.connection.execute("select email,first_name,last_name from caddy_clients").to_json
-            response = CareerAdvisorWebServices.new("admin","nagashri1").send_survey_to_contacts(@cl,'Intrest Profiler')
-            @survey = response
-        end
   end
 
   # POST /educations
   # POST /educations.json
   def create
-
-     @client = Client.find(1)
-
-    @education = @client.education.new(education_params)
+    
+    @education = Education.new(education_params)
+    @education.client_id = session[:student]
 
     respond_to do |format|
       if @education.save
@@ -64,6 +42,7 @@ class EducationsController < ApplicationController
   # PATCH/PUT /educations/1
   # PATCH/PUT /educations/1.json
   def update
+    
     respond_to do |format|
       if @education.update(education_params)
         format.html { redirect_to @education, notice: 'Education was successfully updated.' }

@@ -18,8 +18,7 @@
             <th>High grade level</th>
             <th>Expected grad date</th>
             <th>Degree obtained</th>
-            <th>Created by</th>
-            <th>Updated by</th>
+          
             <th></th>
         <th></th>
         <th></th>
@@ -36,8 +35,7 @@
             <td><%= education.high_grade_level %></td>
             <td><%= education.expected_grad_date %></td>
             <td><%= education.degree_obtained %></td>
-            <td><%= education.created_by %></td>
-            <td><%= education.updated_by %></td>
+            
             <td><%= link_to 'Show', education %></td>
         <td><%= link_to 'Edit', edit_education_path(education) %></td>
         <td><%= link_to 'Destroy', education, method: :delete, data: { confirm: 'Are you sure?' } %></td>

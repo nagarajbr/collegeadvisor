@@ -15,14 +15,7 @@ class AddressesController < ApplicationController
 
   # GET /addresses/new
   def new
-
-    @client = Client.find(1)
-
-    if @client.present?
-     @address = @client.address.new
-   end
-
-
+      @address = Address.new
   end
 
   # GET /addresses/1/edit
@@ -32,10 +25,10 @@ class AddressesController < ApplicationController
   # POST /addresses
   # POST /addresses.json
   def create
-   @client = Client.find(1)
-   @address = @client.address(address_params)
-
-    respond_to do |format|
+   
+   @address = Address.new(address_params)
+   @address.client_id = session[:student].to_i
+   respond_to do |format|
       if @address.save
         format.html { redirect_to @address, notice: 'Address was successfully created.' }
         format.json { render :show, status: :created, location: @address }
@@ -78,6 +71,6 @@ class AddressesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def address_params
-      params.require(:address).permit(:address1, :address2, :city, :state, :zip, :address_type)
+      params.require(:address).permit!#(:address1, :address2, :city, :state, :zip, :address_type)
     end
 end

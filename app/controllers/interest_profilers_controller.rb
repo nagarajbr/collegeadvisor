@@ -1,43 +1,53 @@
 
 class InterestProfilersController < ApplicationController
-  before_action :set_interest_profiler, only: [:edit, :update, :destroy]
+  before_action :set_interest_profiler, only: [ :update, :destroy]
 
 
   # GET /interest_profilers
   # GET /interest_profilers.json
   def index
 
+    @zone_results = []
+        onet_ws = OnetWebService.new("arwins","9436zfu")
+      @job_zone_desc = onet_ws.get_interest_profiler_job_zones
+        count = 0
+        while count < 6
+          zone_result = onet_ws.get_interest_profiler_matching_carrers(session[:answers].to_i,count)
+          @zone_results << zone_result
+          count = count + 1
+        end
+     # @occupation_details_array = []
+     # occupation_title_code_array = []
+     # onet_ws = OnetWebService.new("arwins","9436zfu")
+     # cos_ws = CareerOneStopWebServices.new("a","b")
+     # indeed_ws = IndeedWebService.new()
+     # usjob_ws = UsJobsWebService.new()
+     # @occupations = onet_ws.get_interest_profiler_matching_carrers(session[:answers].to_i)
 
-     @occupation_details_array = []
-     occupation_title_code_array = []
-     onet_ws = OnetWebService.new("arwins","9436zfu")
-     cos_ws = CareerOneStopWebServices.new("a","b")
-      indeed_ws = IndeedWebService.new()
-      usjob_ws = UsJobsWebService.new()
-     #@occupations = onet_ws.get_interest_profiler_matching_carrers(session[:answers].to_i)
-     @occupations = CareerAdvisorWebServices.new("admin","nagashri1").get_short_form_ip_results(session[:answers].to_i)
+     # Rails.logger.debug("---AAAAAAAA--#{@occupations.inspect}")
+     #@occupations = CareerAdvisorWebServices.new("admin","nagashri1").get_short_form_ip_results(session[:answers].to_i)
 
 
-     @occupations.each do |key,val|
-        indeed_job_count = indeed_ws.job_by_location_count(key["title"],'little Rock' , 'AR')
-        us_job_count = 0# usjob_ws.job_by_location_count(key["title"],'little Rock' , 'AR')
-        apprenticeship_count =   cos_ws.get_apprenticeship_count_by_occupation(key["onetsoc_code"],'Little Rock , AR')
-        training_count =  cos_ws.get_training_count_by_occupation(key["onetsoc_code"],'Little Rock , AR')
-        #agency_providers_count = get_results_count_from_sql(key["onetsoc_code"])
-        if indeed_job_count.to_i < 0
-           job_count = 0  
-        else
-          job_count = indeed_job_count.to_i
-        end 
+     # @occupations.each do |key,val|
+     #    indeed_job_count = indeed_ws.job_by_location_count(key["title"],'little Rock' , 'AR')
+     #    us_job_count = 0# usjob_ws.job_by_location_count(key["title"],'little Rock' , 'AR')
+     #    apprenticeship_count =   cos_ws.get_apprenticeship_count_by_occupation(key["onetsoc_code"],'Little Rock , AR')
+     #    training_count =  cos_ws.get_training_count_by_occupation(key["onetsoc_code"],'Little Rock , AR')
+     #    #agency_providers_count = get_results_count_from_sql(key["onetsoc_code"])
+     #    if indeed_job_count.to_i < 0
+     #       job_count = 0  
+     #    else
+     #      job_count = indeed_job_count.to_i
+     #    end 
           
-        if (job_count == 0 && apprenticeship_count == 0 && training_count == 0 )
-        else
-            occupation_details_hash = { :code => key["onetsoc_code"],:title => key["title"], :fit => key["fit"] ,:jobcount => job_count , :apprenticecount => apprenticeship_count , :trainingcount => training_count }
-            occupation_title_code_hash = {:title => key["title"],:code => key["onetsoc_code"]}
-            @occupation_details_array.push(occupation_details_hash)
-            occupation_title_code_array.push(occupation_title_code_hash)
-       end
-     end
+     #    if (job_count == 0 && apprenticeship_count == 0 && training_count == 0 )
+     #    else
+     #        occupation_details_hash = { :code => key["onetsoc_code"],:title => key["title"], :fit => key["fit"] ,:jobcount => job_count , :apprenticecount => apprenticeship_count , :trainingcount => training_count }
+     #        occupation_title_code_hash = {:title => key["title"],:code => key["onetsoc_code"]}
+     #        @occupation_details_array.push(occupation_details_hash)
+     #        occupation_title_code_array.push(occupation_title_code_hash)
+     #   end
+     # end
 
        
      #@occupation_details_array =  Kaminari.paginate_array(@occupation_details_array, total_count: @occupations.count).page(params[:page]).per(10)
@@ -58,8 +68,12 @@ class InterestProfilersController < ApplicationController
 
   # GET /interest_profilers/1/edit
   def edit
-
-    @career_details= OnetWebService.new("arwins","9436zfu").get_interest_profiler_full_career_report(@occupation_code)
+     @report_code = params[:id].to_s
+    @report_code = @report_code.insert(2,'-').insert(@report_code.length-2,'.')
+    # Rails.logger.debug("@report_code = #{@report_code}")
+    response = OnetWebService.new("arwins","9436zfu").get_interest_profiler_full_career_report(@report_code)
+    @career_details = response
+    #@career_details= OnetWebService.new("arwins","9436zfu").get_interest_profiler_full_career_report(@occupation_code)
 
   end
 

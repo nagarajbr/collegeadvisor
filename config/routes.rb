@@ -21,5 +21,7 @@ Rails.application.routes.draw do
   # We are customizing the registration route to add our company fields
   devise_for :users, :controllers => { registrations: 'registrations'}
   resources :users, :companies
+
+  get "/client/select/:id" => "clients#select_student" , as: :select_student
 end
 

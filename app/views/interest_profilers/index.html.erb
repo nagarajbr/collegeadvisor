@@ -1,33 +1,54 @@
-<div class="page-header">
-   <%= link_to interest_profiler_path(1), class: 'btn btn-default' do %>
-    <span class="glyphicon glyphicon-list-alt"></span>
-    Back
-  <% end %>
+<%#= debug @job_zone_desc %>
+<% count = 1 %>
+<% @job_zone_desc["job_zones"]["job_zone"].each do |jz| %>
 
-  <h1>Recommended Occupation(s)  </h1>
-</div>
+  <table>
+      <tbody>
+        <tr>
+          <td> <b> <%= jz['title'].split(":").first %> </b> </td>
+          <td>  <%= jz['title'].split(":").last %> </td>
+        </tr>
+        <tr>
+          <td> <b> Experience </b> </td>
+          <td> <%= jz['experience'] %> </td>
+        </tr>
+        <tr>
+          <td> <b> Education </b> </td>
+          <td> <%= jz['education'] %> </td>
+        </tr>
+        <tr>
+          <td> <b> Job Training </b> </td>
+          <td> <%= jz['job_training'] %> </td>
+        </tr>
+        <tr>
+          <td> <b> Examples </b> </td>
+          <td> <%= jz['examples'] %> </td>
+        </tr>
+    </tbody>
+  </table>
 
-<table class="table table-striped table-bordered">
-        <thead>
-              <tr>
-              <th width="45%"> Occupation </th>
-              <th width="45%"> Fits </th>
-              <th width="45%"> Job Listings </th>
-              <th width="45%"> Apprenticeship Listings </th>
-              <th width="45%"> Training Listings </th>
-
-            </tr>
-            </thead>
-          <tbody>
-            <% @occupation_details_array.each do |occp| %>
-              <tr>
-              <td> <%= link_to occp[:title], edit_interest_profiler_path(occp[:title]) %></td>
-              <td> <%= occp[:fit] %></td>
-              <td> <%= link_to occp[:jobcount],job_search_path(occp[:title]) %></td>
-              <td> <%= link_to occp[:apprenticecount] ,apprenticeship_path(occp[:title]) %></td>
-              <td> <%= link_to occp[:trainingcount],training_path(occp[:title]) %></td>
-
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+  <table>
+    <thead>
+          <tr>
+          <th> Careers </th>
+          <th width="15%"> Bright Outlook </th>
+          <th width="15%"> Green </th>
+          <th width="15%"> Registered Apprenticeship </th>
+        </tr>
+        </thead>
+      <tbody>
+        <% @zone_results[count]["careers"]["career"].each do |career| %>
+          <tr>
+          <!-- <td> <%#= radio_button_tag(jz['title'].split(":").first.split.join.underscore, true) %>&nbsp;  <%#= career['title'] %> </td> -->
+          <td> <%= link_to "#{career['title']}", edit_interest_profiler_path(career['code'].gsub(/[^0-9]/, '')),id: "hyperlink" %> </td>
+          <td> <%= check_box_tag 'bright_outlook', '', (career['tags']['bright_outlook'] == 'true') %> </td>
+          <td> <%= check_box_tag 'green', 'yes', (career['tags']['green'] == 'true') %> </td>
+          <td> <%= check_box_tag 'apprenticeship', 'yes', (career['tags']['apprenticeship'] == 'true') %> </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+  <br>
+  <% count = count + 1 %>
+<% end %>

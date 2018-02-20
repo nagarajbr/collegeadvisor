@@ -1,5 +1,7 @@
 class Client < ApplicationRecord
 enum gender: [:Male, :Female]
+has_many :address
+has_many :education
  before_create :set_create_user_fields
  before_update :set_update_user_field
 

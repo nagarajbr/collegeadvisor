@@ -38,7 +38,7 @@ group :test do
   gem 'launchy'
   gem 'selenium-webdriver'
 end
-#gem 'wdm', '>= 0.1.0'
+gem 'wdm', '>= 0.1.0'
 gem 'bootstrap-generators', '~> 3.3.4'
 gem 'record_tag_helper'
 gem 'bcrypt'
