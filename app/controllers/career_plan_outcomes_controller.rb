@@ -1,7 +1,7 @@
 
 class CareerPlanOutcomesController < ApplicationController
   before_action :set_career_plan_outcome, only: [:show, :edit, :update, :destroy]
-  include BaseHelper
+#  include BaseHelper
   # GET /career_plan_outcomes
   # GET /career_plan_outcomes.json
   def index
