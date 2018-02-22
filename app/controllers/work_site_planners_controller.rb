@@ -1,7 +1,7 @@
 
 class WorkSitePlannersController < ApplicationController
   before_action :set_work_site_planner, only: [:show, :edit, :update, :destroy]
-  include BaseHelper
+#  include BaseHelper
   # GET /work_site_planners
   # GET /work_site_planners.json
   def index
