@@ -1,5 +1,5 @@
 class SurveysController < ApplicationController
-    include BaseHelper
+#    include BaseHelper
     include Wicked::Wizard
 
     before_action :set_survey, only: [:update, :destroy]
