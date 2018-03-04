@@ -1,1 +1,0 @@
-json.array! @work_site_planners, partial: 'work_site_planners/work_site_planner', as: :work_site_planner

@@ -1,1 +1,0 @@
-json.array! @education_planners, partial: 'education_planners/education_planner', as: :education_planner

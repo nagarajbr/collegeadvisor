@@ -14,7 +14,7 @@ class RegistrationsController < Devise::RegistrationsController
     # For updates we make sure to let the Company ID pass through or the form will 
 	# generate a new company every time we edit our details
 	
-    params.require(:user).permit(:email,:password, :password_confirmation, :current_password, 
+    params.require(:user).permit(:email,:name,:password, :password_confirmation, :current_password, 
 	company_attributes: [:id,:company_name])
   end
 end

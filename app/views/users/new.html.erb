@@ -1,9 +1,13 @@
+		<legend> <%= set_subheader("New User") %> </legend>
 <div class="page-header">
   <%= link_to clients_path, class: 'btn btn-default' do %>
     <span class="glyphicon glyphicon-list-alt"></span>
     Back
   <% end %>
-  <h1>New client</h1>
+  
 </div>
-
+<fieldset>
+	<section class="solidbody">
 <%= render 'form' %>
+</fieldset>
+	</section>

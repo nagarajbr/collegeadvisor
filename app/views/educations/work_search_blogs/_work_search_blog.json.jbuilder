@@ -1,2 +1,0 @@
-json.extract! work_search_blog, :id, :activity_date, :hours_spent, :work_site_name, :address1, :address2, :city, :state, :zip, :person_contacted, :contact_outcome, :comments, :job_seeker_id, :created_at, :updated_at
-json.url work_search_blog_url(work_search_blog, format: :json)

@@ -1,1 +1,0 @@
-json.array! @career_plan_outcomes, partial: 'career_plan_outcomes/career_plan_outcome', as: :career_plan_outcome

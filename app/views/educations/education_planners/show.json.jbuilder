@@ -1,1 +1,0 @@
-json.partial! "education_planners/education_planner", education_planner: @education_planner

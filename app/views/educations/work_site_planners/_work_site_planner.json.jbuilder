@@ -1,2 +1,0 @@
-json.extract! work_site_planner, :id, :activity, :work_site_name, :point_of_contact, :occupation, :position_type, :salary_per_hour, :{precision, :5,, :scale, :2}, :working_hours_per_week, :completed, :outcome, :created_at, :updated_at
-json.url work_site_planner_url(work_site_planner, format: :json)
