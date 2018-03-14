@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :questions
   resources :apprenticeships
   resources :trainings
+  get 'educations/:id/update_course' => 'educations#update_course', as: 'update_course'
   resources :educations
   resources :addresses
   resources :clients
@@ -24,5 +25,12 @@ Rails.application.routes.draw do
   resources :users_admin, :controller => 'users'
 
   get "/client/select/:id" => "clients#select_student" , as: :select_student
+
+  resources :master_domain_items
+  resources :master_domains
+
+  
+
+
 end
 

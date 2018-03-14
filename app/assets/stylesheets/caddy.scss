@@ -216,3 +216,10 @@ border: 5px solid darken($information-panel-bg-color,5%);
    text-align:left;
    font-size: 115%;
 }
+
+th {
+    display: table-cell;
+    vertical-align: inherit;
+    font-weight: bold;
+    text-align: center;
+}

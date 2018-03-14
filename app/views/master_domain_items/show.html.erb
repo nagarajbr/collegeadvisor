@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @master_domain_item.value %>
+</p>
+
+<p>
+  <strong>Short description:</strong>
+  <%= @master_domain_item.short_description %>
+</p>
+
+<p>
+  <strong>Long description:</strong>
+  <%= @master_domain_item.long_description %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @master_domain_item.status %>
+</p>
+
+<p>
+  <strong>Usage:</strong>
+  <%= @master_domain_item.usage %>
+</p>
+
+<%= link_to 'Edit', edit_master_domain_item_path(@master_domain_item) %> |
+<%= link_to 'Back', master_domain_items_path %>

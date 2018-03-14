@@ -116,6 +116,11 @@ end
     wizard_steps.each do |stp|
     session[:answers] = session[:answers] + session[stp].to_s if session[stp].present?
     end
+    @student_assessement = StudentAssessement.new
+    @student_assessement.student_id = session[:student]
+    @student_assessement.assessement_date = Date.today
+    @student_assessement.assessement_answers = session[:answers]
+    @student_assessement.save
     interest_profilers_path
 
    end

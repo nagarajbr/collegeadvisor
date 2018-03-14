@@ -1,0 +1,37 @@
+<%= form_for(@master_domain_item) do |f| %>
+  <% if @master_domain_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@master_domain_item.errors.count, "error") %> prohibited this master_domain_item from being saved:</h2>
+
+      <ul>
+      <% @master_domain_item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :value %><br>
+    <%= f.text_area :value %>
+  </div>
+  <div class="field">
+    <%= f.label :short_description %><br>
+    <%= f.text_area :short_description %>
+  </div>
+  <div class="field">
+    <%= f.label :long_description %><br>
+    <%= f.text_area :long_description %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.check_box :status %>
+  </div>
+  <div class="field">
+    <%= f.label :usage %><br>
+    <%= f.text_area :usage %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

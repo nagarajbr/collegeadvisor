@@ -11,15 +11,9 @@
     <thead>
       <tr>
             <th>School name</th>
-            <th>Attendance type</th>
-            <th>Effective beg date</th>
-            <th>Effective end date</th>
-            <th>Major study</th>
-            <th>High grade level</th>
-            <th>Expected grad date</th>
-            <th>Degree obtained</th>
-          
-            <th></th>
+            <th>Highest Grade</th>
+            <th>Graduated on</th>
+              <th></th>
         <th></th>
         <th></th>
       </tr>
@@ -28,14 +22,9 @@
     <tbody>
       <%= content_tag_for(:tr, @educations) do |education| %>
             <td><%= education.school_name %></td>
-            <td><%= education.attendance_type %></td>
-            <td><%= education.effective_beg_date %></td>
-            <td><%= education.effective_end_date %></td>
-            <td><%= education.major_study %></td>
             <td><%= education.high_grade_level %></td>
             <td><%= education.expected_grad_date %></td>
-            <td><%= education.degree_obtained %></td>
-            
+                     
             <td><%= link_to 'Show', education %></td>
         <td><%= link_to 'Edit', edit_education_path(education) %></td>
         <td><%= link_to 'Destroy', education, method: :delete, data: { confirm: 'Are you sure?' } %></td>

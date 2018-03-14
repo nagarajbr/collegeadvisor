@@ -1,0 +1,50 @@
+
+<%= form_for(@master_domain) do |f| %>
+  <% if @master_domain.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@master_domain.errors.count, "error") %> prohibited this master_domain from being saved:</h2>
+
+      <ul>
+      <% @master_domain.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+  </div>
+  <h2>Items</h2>
+  <div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+
+    <thead>
+      <tr>
+        <th>Value</th>
+        <th>Short Description</th>
+        <th>Long Description</th>
+        <th>Status</th>
+        <th>Usage</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= f.fields_for :masterdomainitems, show_empty: true do |item| %>
+         <%= render 'masterdomainitem_fields', :f => item %>
+    <% end %>
+
+
+    </tbody>
+  </table>
+  </div>
+  <div class='links'>
+      <%= link_to_add_association 'add item', f, :masterdomainitems %>
+    </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+

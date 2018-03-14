@@ -6,7 +6,10 @@ development:
   #username: waps_app
   #password: app_waps
   host: localhost
-  #port: 5432
-  username: caddy_cloud_admin
-  password: <%= ENV['CADDY-CLOUD_DATABASE_PASSWORD'] %>
+  #username: thirumalgonguntala
+  #password: 
   database: caddy_cloud
+  username: postgres
+  password: abcd1234
+  pool: 5
+

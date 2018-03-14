@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171019224247) do
+ActiveRecord::Schema.define(version: 20180311193408) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,18 @@ ActiveRecord::Schema.define(version: 20171019224247) do
     t.string   "company_name"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "education_details", force: :cascade do |t|
+    t.integer  "education_id"
+    t.integer  "category"
+    t.integer  "course"
+    t.integer  "status"
+    t.integer  "score"
+    t.integer  "created_by",   null: false
+    t.integer  "updated_by",   null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "education_planners", force: :cascade do |t|
@@ -147,6 +159,28 @@ ActiveRecord::Schema.define(version: 20171019224247) do
     t.index ["resource_id"], name: "index_events_on_resource_id", using: :btree
   end
 
+  create_table "master_domain_items", force: :cascade do |t|
+    t.integer  "master_domain_id"
+    t.string   "value"
+    t.string   "short_description"
+    t.string   "long_description"
+    t.boolean  "status"
+    t.string   "usage"
+    t.integer  "created_by",        null: false
+    t.integer  "updated_by",        null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  create_table "master_domains", force: :cascade do |t|
+    t.string   "description"
+    t.integer  "created_by",  null: false
+    t.integer  "updated_by",  null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["description"], name: "index_master_domains_on_description", unique: true, using: :btree
+  end
+
   create_table "reminders", force: :cascade do |t|
     t.integer  "jobseeker_id"
     t.string   "description"
@@ -160,6 +194,14 @@ ActiveRecord::Schema.define(version: 20171019224247) do
     t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "student_assessements", force: :cascade do |t|
+    t.integer  "student_id"
+    t.date     "assessement_date"
+    t.string   "assessement_answers"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
   create_table "trainings", force: :cascade do |t|
@@ -183,8 +225,20 @@ ActiveRecord::Schema.define(version: 20171019224247) do
     t.string   "name"
     t.integer  "role"
     t.integer  "company_id"
+    t.string   "invitation_token"
+    t.datetime "invitation_created_at"
+    t.datetime "invitation_sent_at"
+    t.datetime "invitation_accepted_at"
+    t.integer  "invitation_limit"
+    t.string   "invited_by_type"
+    t.integer  "invited_by_id"
+    t.integer  "invitations_count",      default: 0
     t.index ["company_id"], name: "index_users_on_company_id", using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true, using: :btree
+    t.index ["invitations_count"], name: "index_users_on_invitations_count", using: :btree
+    t.index ["invited_by_id"], name: "index_users_on_invited_by_id", using: :btree
+    t.index ["invited_by_type", "invited_by_id"], name: "index_users_on_invited_by_type_and_invited_by_id", using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 

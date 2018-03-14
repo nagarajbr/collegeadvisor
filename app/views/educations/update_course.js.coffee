@@ -1,0 +1,1 @@
+$(".course_selected").empty().append("<%= escape_javascript(render(partial: "master_domain_items/master_domain_items", collection: @master_domain_items)) %>")
