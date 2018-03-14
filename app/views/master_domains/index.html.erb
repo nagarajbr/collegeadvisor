@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Master Domains</h1>
+
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @master_domains.each do |master_domain| %>
+      <tr>
+        <td><%= master_domain.description %></td>
+        <td><%= link_to 'Show', master_domain %></td>
+        <td><%= link_to 'Edit', edit_master_domain_path(master_domain) %></td>
+        <td><%= link_to 'Destroy', master_domain, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to new_master_domain_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Master Domain
+  <% end %>

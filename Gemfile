@@ -20,6 +20,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bootstrap-sass'
 gem 'devise'
+gem 'devise_invitable', '~> 1.7.0'
 #gem 'high_voltage'
 gem 'pundit'
 group :development do
@@ -34,7 +35,7 @@ group :development, :test do
 end
 group :test do
   gem 'capybara'
-  gem 'database_cleaner'
+  #gem 'database_cleaner'
   gem 'launchy'
   gem 'selenium-webdriver'
 end
@@ -50,3 +51,4 @@ gem 'wicked'
 gem 'momentjs-rails'
 gem 'simple_form'
 gem 'kaminari'
+gem 'cocoon'

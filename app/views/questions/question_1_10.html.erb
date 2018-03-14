@@ -1,8 +1,7 @@
 <fieldset>
   <section class="solidbody">
 
-<legend> <%= set_subheader("Work Interests") %> </legend><br>
-
+<legend> <%= set_subheader("Work Interests") %> </legend>
 
 <%= form_for @quest, url: next_wizard_path, :method => :get do |f| %>
 <% question = 1 %>
@@ -10,9 +9,17 @@
 				<thead>
 					    <tr>
 							<th width="5%"> </th>
-							<% ["Dislike", "Not Sure" ,"Like"].each do |key| %>
-                            <th width="5%"> <%= key %> </th>
-							<% end %>
+
+							<th width="11%"> 
+								
+                                <%= image_tag("strongly_dislike.png" )  %> <%= "Strongly Dislike" %>
+                                
+								
+							</th>
+							<th width="11%"> <%= image_tag("dislike.png") %> <%= "Dislike" %>  </th>
+							<th width="11%"> <%= image_tag("unsure.png") %> <%= "Unsure" %> </th>
+							<th width="11%"> <%= image_tag("like.png") %> <%= "Like" %> </th>
+							<th width="11%"> <%= image_tag("strongly_like.png") %> <%= "Strongly Like" %> </th>
 							<th width="45%">  </th>
 						</tr>
 					  </thead>
@@ -24,7 +31,7 @@
 			    		<tr>
 							<td> <%= question %></td>
 							<% count = 1 %>
-							<% ["Dislike", "Not Sure" ,"Like"].each do |key1| %>
+							<% ["Strongly Dislike", "Dislike" ,"Unsure","Like","Strongly Like"].each do |key1| %>
 							<% if session[params[:id]].present? %>
 								<%  if count == session[params[:id]].at(answer).to_i  %>
 	                            <td> <%= radio_button_tag(question, count , checked = true ) %></td>

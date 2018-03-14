@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Master Domain Items</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Value</th>
+      <th>Short description</th>
+      <th>Long description</th>
+      <th>Status</th>
+      <th>Usage</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @master_domain_items.each do |master_domain_item| %>
+      <tr>
+        <td><%= master_domain_item.value %></td>
+        <td><%= master_domain_item.short_description %></td>
+        <td><%= master_domain_item.long_description %></td>
+        <td><%= master_domain_item.status %></td>
+        <td><%= master_domain_item.usage %></td>
+        <td><%= link_to 'Show', master_domain_item %></td>
+        <td><%= link_to 'Edit', edit_master_domain_item_path(master_domain_item) %></td>
+        <td><%= link_to 'Destroy', master_domain_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Master domain item', new_master_domain_item_path %>

@@ -1,71 +1,42 @@
-<%= form_for(@education, html: { class: "form-horizontal", role: "form" }) do |f| %>
-  <% if @education.errors.any? %>
-    <div class="alert alert-danger alert-dismissable" role="alert">
-      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-      <h4><%= pluralize(@education.errors.count, "error") %> prohibited this education from being saved:</h4>
+<%= simple_form_for(@education) do |f| %>
+  <%= f.error_notification %>
 
-      <ul>
-      <% @education.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+  <div class="form-inputs">
+    <%= f.input :school_name , label: "School Name" %>
+    
+    <%= f.input :high_grade_level, :label => "Highest Grade", :collection => Education.high_grade_levels.keys %>
+    <%= f.input :effective_beg_date , as: :date,  discard_day: true, label: "High School graduation" %>
+    <%= f.input :expected_grad_date , as: :date,  discard_day: true, label: "Expected Graduation" %>
+
+  </div>
+  <h3>Major Courses</h3>
+
+  <table class='table'>
+    <thead>
+      <tr>
+        <th>Category</th>
+        <th>Course</th>
+        <th>Status</th>
+        <th>Score</th>
+        
+      </tr>
+    </thead>
+    <tbody class='items'>
+      <%= f.simple_fields_for :education_details do |builder| %>
+        <%= render 'education_detail_fields', f: builder %>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
+    </tbody>
 
-  <div class="form-group">
-    <%= f.label :school_name, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :school_name, class: "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :attendance_type, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-         <%= f.select :attendance_type, Education.attendance_types.keys %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :effective_beg_date, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.date_select :effective_beg_date, class: "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :effective_end_date, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.date_select :effective_end_date, class: "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :major_study, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-         <%= f.select :major_study, Education.major_studies.keys %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :high_grade_level, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-     
-      <%= f.select :high_grade_level, Education.high_grade_levels.keys %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :expected_grad_date, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.date_select :expected_grad_date, class: "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :degree_obtained, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.date_select :degree_obtained, class: "form-control" %>
-    </div>
-  </div>
+  </table>
+
+  <div class="form-actions">
+    <%= f.button :submit , class: 'btn btn-primary' %>
+    <%= link_to_add_association 'Add Major Course', f, :education_details, class: 'btn btn-primary' %>
   
-  </div>
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <%= f.submit class: "btn btn-primary" %>
-    </div>
+    <%#= link_to 'Show', @domain , class: 'btn btn-primary' %> |
+    <%#= link_to 'Back', domains_path, class: 'btn btn-primary' %>
   </div>
 <% end %>
+
+
+

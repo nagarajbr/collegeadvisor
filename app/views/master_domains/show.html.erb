@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Description:</strong> <%= @master_domain.description %>
+
+</p>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+	<thead>
+      <tr>
+        <th>Value</th>
+        <th>Short Description</th>
+        <th>Long Description</th>
+        <th>Status</th>
+        <th>Usage</th>
+       </tr>
+    </thead>
+    <tbody>
+     <% @master_domain.masterdomainitems.each do |item| %>
+      <tr >
+  <td >
+    <%= item.value  %>
+  </td>
+  <td >
+    <%= item.short_description  %>
+  </td>
+  <td >
+    <%= item.long_description  %>
+  </td>
+   <td >
+    <%= item.status  %>
+  </td>
+   <td >
+    <%= item.usage  %>
+  </td>
+
+</tr>
+
+     <% end %>
+
+
+    </tbody>
+  </table>
+  </div>
+
+
+
+<div class="page-header">
+  <%= link_to master_domains_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to edit_master_domain_path(@master_domain), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+
+</div>

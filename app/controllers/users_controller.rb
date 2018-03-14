@@ -35,10 +35,11 @@ class UsersController < ApplicationController
   end
 
    def create
-
+       
         @user = User.new(secure_params)
+        @user.company_id = current_user.company_id 
         authorize @user
-        if @user.save
+        if @user.save  
             redirect_to user_url, notice: "User succesfully created!" 
         else
             render :new

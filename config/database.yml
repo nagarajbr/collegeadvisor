@@ -6,8 +6,10 @@ development:
   #username: waps_app
   #password: app_waps
   host: localhost
-  username: thirumalgonguntala
-  password: 
+  #username: thirumalgonguntala
+  #password: 
   database: caddy_cloud
+  username: postgres
+  password: abcd1234
   pool: 5
 

@@ -14,17 +14,20 @@ class EducationsController < ApplicationController
 
   # GET /educations/new
   def new
+    @master_domain_items = MasterDomainItem.where("master_domain_id in (2,3,4,5,6,7,8)")
      @education  = Education.new
+
   end
 
   # GET /educations/1/edit
   def edit
+      @master_domain_items = MasterDomainItem.where("master_domain_id in (2,3,4,5,6,7,8)")
   end
 
   # POST /educations
   # POST /educations.json
   def create
-    
+    @master_domain_items = MasterDomainItem.where("master_domain_id in (2,3,4,5,6,7,8)")
     @education = Education.new(education_params)
     @education.client_id = session[:student]
 
@@ -64,14 +67,25 @@ class EducationsController < ApplicationController
     end
   end
 
+  def update_course
+    @master_domain_items = MasterDomainItem.where(master_domain_id: params[:domain_id])
+    
+     respond_to do |format|
+      format.js
+    end
+       
+    end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_education
+      if params[:id].present?
       @education = Education.find(params[:id])
+    end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def education_params
-      params.require(:education).permit(:school_name, :attendance_type, :effective_beg_date, :effective_end_date, :major_study, :high_grade_level, :expected_grad_date, :degree_obtained, :created_by, :updated_by)
+      params.require(:education).permit(:school_name, :attendance_type, :effective_beg_date, :effective_end_date, :major_study, :high_grade_level, :expected_grad_date, :degree_obtained, :created_by, :updated_by , education_details_attributes: EducationDetail.attribute_names.map(&:to_sym).push(:_destroy))
     end
 end
