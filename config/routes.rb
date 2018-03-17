@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :student_assessements
-  get 'index/student_assessements'
-
-  get 'new/student_assessements'
-
   resources :surveys
   resources :documents
   resources :agency_providers

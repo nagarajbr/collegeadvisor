@@ -2,12 +2,12 @@
 <tr class='nested-fields'>
   <td class="value">
     
-    <%= f.collection_select :category, MasterDomain.where("id in (?)", [2,3,4,5,6,7,8]).order(:id),:id,:description, { id: 'category_selected' ,class: 'form-control' }  %>
+    <%= f.collection_select :category, MasterDomain.order(:id),:id,:description, { class: 'category_selected' }  %>
     
 
   </td>
   <td class="short_description">
-     <%= f.grouped_collection_select :course, MasterDomain.where("id in (?)", [2,3,4,5,6,7,8]).order(:id), :master_domain_items, :description, :id, :short_description,  { id: 'course_selected' ,class: 'form-control'}   %>
+     <%= f.grouped_collection_select :course, MasterDomain.order(:id), :master_domain_items, :description, :id, :short_description,  { class: 'course_selected' }   %>
           
     
   </td>

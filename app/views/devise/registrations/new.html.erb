@@ -14,7 +14,7 @@
 
   <div class="field">
     <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= f.email_field :name %>
   </div>
 
   <!--  We add this to the Registration form so we can create a new company 
@@ -22,8 +22,8 @@
  -->
  <div class="field">
    <%= f.fields_for :company do |builder| %>
-    <%#= builder.label :company_name %><br />
-    <%= builder.hidden_field :company_name , :value => "caddy"%>
+    <%= builder.label :company_name %><br />
+    <%= builder.text_field :company_name %>
 	<%end%>
   </div>
 
