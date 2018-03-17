@@ -30,7 +30,8 @@ class EducationsController < ApplicationController
     @master_domain_items = MasterDomainItem.where("master_domain_id in (2,3,4,5,6,7,8)")
     @education = Education.new(education_params)
     @education.client_id = session[:student]
-
+     @education.created_by = current_user.id
+    @education.updated_by = current_user.id
     respond_to do |format|
       if @education.save
         format.html { redirect_to @education, notice: 'Education was successfully created.' }
@@ -45,7 +46,7 @@ class EducationsController < ApplicationController
   # PATCH/PUT /educations/1
   # PATCH/PUT /educations/1.json
   def update
-    
+    @education.updated_by = current_user.id
     respond_to do |format|
       if @education.update(education_params)
         format.html { redirect_to @education, notice: 'Education was successfully updated.' }

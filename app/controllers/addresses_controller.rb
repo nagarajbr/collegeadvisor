@@ -28,6 +28,8 @@ class AddressesController < ApplicationController
    
    @address = Address.new(address_params)
    @address.client_id = session[:student].to_i
+   @address.created_by = current_user.id
+    @address.updated_by = current_user.id
    respond_to do |format|
       if @address.save
         format.html { redirect_to @address, notice: 'Address was successfully created.' }
@@ -42,6 +44,7 @@ class AddressesController < ApplicationController
   # PATCH/PUT /addresses/1
   # PATCH/PUT /addresses/1.json
   def update
+    @address.updated_by = current_user.id
     respond_to do |format|
       if @address.update(address_params)
         format.html { redirect_to @address, notice: 'Address was successfully updated.' }

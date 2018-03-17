@@ -5,7 +5,13 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.json
   def index
+    if current_user.admin?
      @clients = Client.all#caddy_client
+   else
+    @clients = Client.where("created_by = ?", current_user.id)
+
+   end
+     #@clients = policy_scope(Client)
   end
 
   # GET /clients/1
@@ -26,6 +32,8 @@ class ClientsController < ApplicationController
   # POST /clients.json
   def create
     @client = Client.new(client_params)
+    @client.created_by = current_user.id
+    @client.updated_by = current_user.id
 
     respond_to do |format|
       if @client.save
@@ -41,6 +49,8 @@ class ClientsController < ApplicationController
   # PATCH/PUT /clients/1
   # PATCH/PUT /clients/1.json
   def update
+     
+    @client.updated_by = current_user.id
     respond_to do |format|
       if @client.update(client_params)
         format.html { redirect_to @client, notice: 'Client was successfully updated.' }

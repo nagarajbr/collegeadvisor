@@ -32,7 +32,14 @@
   <div class="form-actions">
     <%= f.button :submit , class: 'btn btn-primary' %>
     <%= link_to_add_association 'Add Major Course', f, :education_details, class: 'btn btn-primary' %>
-  
+    <%= link_to educations_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to @education, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-info-sign"></span>
+    Show
+  <% end %>
     <%#= link_to 'Show', @domain , class: 'btn btn-primary' %> |
     <%#= link_to 'Back', domains_path, class: 'btn btn-primary' %>
   </div>
