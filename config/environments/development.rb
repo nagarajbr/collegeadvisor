@@ -45,14 +45,27 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { :host => 'shielded-wildwood-86291.herokuapp.com' } 
   # 'localhost:3000' }
   config.action_mailer.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+    :user_name => ENV['SENDGRID_USERNAME'],
+    :password => ENV['SENDGRID_PASSWORD'],
+    :domain => 'yourdomain.com',
+    :address => 'smtp.sendgrid.net',
+    :port => 587,
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
+
+'''
   config.action_mailer.smtp_settings = {
-    address:              'smtp.gmail.com',
+    :domain => 'heroku.com',
+    #address:              'smtp.gmail.com',
     port:                 587,
     #domain:               'http://rhelproxy.state.ar.us:8888',
     user_name:            'jdoe21996@gmail.com',
     password:             'johndoe12345',
     authentication:       'plain',
     enable_starttls_auto: true  }
+'''
   config.action_mailer.raise_delivery_errors = true
   # Send email in development mode?
   config.action_mailer.perform_deliveries = true
