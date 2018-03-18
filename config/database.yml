@@ -5,11 +5,12 @@ development:
   #database: waaps_development
   #username: waps_app
   #password: app_waps
-  host: localhost
+  host: ENV['DATABASE_URL']
+  #localhost
   #username: thirumalgonguntala
   #password: 
   database: caddy_cloud
-  username: postgres
-  password: abcd1234
+  username: 
+  password: 
   pool: 5
 
