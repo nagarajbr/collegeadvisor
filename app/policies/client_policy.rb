@@ -3,8 +3,7 @@ class ClientPolicy < ApplicationPolicy
     def resolve
       if user.admin?
         scope.all
-      else
-        
+      else 
         scope.where("created_by = ?", current_user.id)
       end
     end

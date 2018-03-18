@@ -13,6 +13,10 @@ module StudentCaddy
     config.autoload_paths += %W(#{config.root}/services)
     config.autoload_paths += %W(#{config.root}/modules)
     config.autoload_paths += %W(#{config.root}/arwins_web_services)
+    config.autoload_paths += Dir[
+      Rails.root.join('app', 'policies', '*.rb'),
+      Rails.root.join('app', 'lib', '*.rb')
+    ]
 
     config.generators do |g|
       g.test_framework :rspec,

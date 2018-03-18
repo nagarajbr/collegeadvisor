@@ -6,11 +6,9 @@ development:
   #username: waps_app
   #password: app_waps
   host: ENV['DATABASE_URL']
-  #localhost
+  #host: localhost
   #username: thirumalgonguntala
   #password: 
   database: caddy_cloud
-  username: 
-  password: 
   pool: 5
 
