@@ -23,6 +23,7 @@ gem 'devise'
 gem 'devise_invitable', '~> 1.7.0'
 #gem 'high_voltage'
 gem 'pundit'
+gem 'sendgrid-ruby'
 group :development do
   #gem 'better_errors'
   #gem 'rails_layout'
