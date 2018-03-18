@@ -30,7 +30,7 @@ class EducationsController < ApplicationController
     @master_domain_items = MasterDomainItem.where("master_domain_id in (2,3,4,5,6,7,8)")
     @education = Education.new(education_params)
     @education.client_id = session[:student]
-     @education.created_by = current_user.id
+    @education.created_by = current_user.id
     @education.updated_by = current_user.id
     respond_to do |format|
       if @education.save

@@ -20,7 +20,8 @@ Rails.application.routes.draw do
   resources :addresses
   resources :clients
   # We are customizing the registration route to add our company fields
-  devise_for :users, :controllers => { registrations: 'registrations'}
+  devise_for :users, :controllers => { registrations: 'registrations' , invitations: 'invitations'} 
+
   resources :users, :companies
   resources :users_admin, :controller => 'users'
 

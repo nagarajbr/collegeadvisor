@@ -1,20 +1,13 @@
 
 <tr class='nested-fields'>
-  <td class="value">
-    
-    <%= f.collection_select :category, MasterDomain.order(:id),:id,:description, { class: 'category_selected' }  %>
-    
-
+  <td>
+    <%#= f.collection_select :category, MasterDomain.order(:id),:id,:description, {id: "category_selected" ,class: 'sel_ch' }  %>
   </td>
   <td class="short_description">
-     <%= f.grouped_collection_select :course, MasterDomain.order(:id), :master_domain_items, :description, :id, :short_description,  { class: 'course_selected' }   %>
-          
-    
+     <%= f.grouped_collection_select :course, MasterDomain.order(:id), :master_domain_items, :description, :id, :short_description,  {id: "course_selected" }   %>
   </td>
   <td class="long_description">
       <%= f.select :status, MasterDomainItem.item_list(9).collect { |p| ["#{p.short_description} ", p.id] }, { :include_blank => 'Select Course' } , { id: 'status_selected',class: 'form-control' } %>
-     
-
   </td>
    <td class="status">
     <%= f.text_field :score  %>

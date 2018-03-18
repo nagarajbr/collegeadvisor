@@ -35,12 +35,13 @@ class UsersController < ApplicationController
   end
 
    def create
-       
+        
         @user = User.new(secure_params)
         @user.company_id = current_user.company_id 
         authorize @user
-        if @user.save  
-            redirect_to user_url, notice: "User succesfully created!" 
+        if @user.save(validate: false)
+            #User.invite!(:email => @user.email, :name => @user.name) 
+            redirect_to users_path, notice: "User succesfully created and Invitation is sent" 
         else
             render :new
         end
@@ -49,7 +50,7 @@ class UsersController < ApplicationController
   private
 
   def secure_params
-    params.require(:user).permit(:email,:name,:password, :password_confirmation, :current_password, :role)
+    params.require(:user).permit(:email,:name,:password, :password_confirmation, :current_password, :role ,:last_name,:first_name)
   end
 
 end

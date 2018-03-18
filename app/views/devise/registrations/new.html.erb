@@ -11,12 +11,20 @@
     <%= f.email_field :email, autofocus: true %>
   </div>
 
-
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.email_field :name %>
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
   </div>
 
+  <div class="field">
+    
+    <%= f.hidden_field :role , value: "admin" %>
+  </div>
   <!--  We add this to the Registration form so we can create a new company 
 	You can add more company fields here
  -->

@@ -6,15 +6,13 @@ class RegistrationsController < Devise::RegistrationsController
  
  private
   def sign_up_params
-    params.require(:user).permit( :email, :password,:password_confirmation,
-	company_attributes:[:company_name])
+    params.require(:user).permit(:email,:password,:password_confirmation,:last_name,:first_name,:role,company_attributes:[:id,:company_name])
   end
  
   def account_update_params
     # For updates we make sure to let the Company ID pass through or the form will 
 	# generate a new company every time we edit our details
 	
-    params.require(:user).permit(:email,:name,:password, :password_confirmation, :current_password, 
-	company_attributes: [:id,:company_name])
+    params.require(:user).permit(:email,:password, :password_confirmation, :current_password,:last_name,:first_name,:role,company_attributes: [:id,:company_name])
   end
 end
