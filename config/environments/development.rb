@@ -45,6 +45,7 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { :host => 'shielded-wildwood-86291.herokuapp.com' } 
   # 'localhost:3000' }
   config.action_mailer.delivery_method = :smtp
+
   '''
   config.action_mailer.perform_deliveries = true
   config.action_mailer.smtp_settings = {
@@ -58,9 +59,10 @@ Rails.application.configure do
   }
 
 '''
+
   config.action_mailer.smtp_settings = {
     domain: => 'shielded-wildwood-86291.herokuapp.com',
-    #address:              'smtp.gmail.com',
+    address:              'smtp.gmail.com',
     port:                 587,
     #domain:               'http://rhelproxy.state.ar.us:8888',
     user_name:            'jdoe21996@gmail.com',
@@ -71,7 +73,7 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   # Send email in development mode?
   config.action_mailer.perform_deliveries = true
-'''
+
 
   # Suppress logger output for asset requests.
   config.assets.quiet = true
