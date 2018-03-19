@@ -5,17 +5,17 @@
 
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.email_field :email, autofocus: true,:style => "width:350px;" %>
   </div>
 
    <div class="field">
     <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
+    <%= f.text_field :first_name,:style => "width:350px;" %>
   </div>
   
   <div class="field">
     <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
+    <%= f.text_field :last_name,:style => "width:350px;" %>
   </div>
 
  
@@ -25,7 +25,7 @@
  <div class="field">
    <%= f.fields_for :company do |builder| %>
     <%= builder.label :company_name %><br />
-    <%= builder.text_field :company_name %>
+    <%= builder.text_field :company_name,:style => "width:350px;" %>
 	<%end%>
   </div>
   
@@ -35,21 +35,21 @@
 
   <div class="field">
     <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <%= f.password_field :password, autocomplete: "off",:style => "width:350px;" %>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <%= f.password_field :password_confirmation, autocomplete: "off",:style => "width:350px;" %>
   </div>
 
   <div class="field">
     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
+    <%= f.password_field :current_password, autocomplete: "off",:style => "width:350px;" %>
   </div>
-
+  <br>
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "Update" ,class: "btn btn-primary"  %>
   </div>
 <% end %>
 
@@ -57,4 +57,4 @@
 
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
-<%= link_to "Back", :back %>
+<%= link_to "Back", :back ,class: "btn btn-primary" %>

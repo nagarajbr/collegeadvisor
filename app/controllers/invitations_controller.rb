@@ -3,7 +3,7 @@ class InvitationsController < Devise::InvitationsController
 
   def create
     super
-    User.where(email: params[:user][:email]).update_all(:company_id => current_user.company_id , :role => 1 , :last_name => params[:user][:last_name] ,:first_name => params[:user][:first_name])
+    User.where(email: params[:user][:email]).update_all(:company_id => current_user.company_id , :role => 0 , :last_name => params[:user][:last_name] ,:first_name => params[:user][:first_name])
     @client = Client.where("upper(ltrim(last_name)) = ? and upper(ltrim(first_name)) = ?",(params[:user][:last_name]).strip.upcase,(params[:user][:first_name]).strip.upcase)  
     if @client.present?
     else

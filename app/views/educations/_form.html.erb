@@ -10,14 +10,15 @@
 
   </div>
   <h3>Major Courses</h3>
-
-  <table class='table'>
+  <div>
+  <table class="table table-striped table-bordered table-hover">
     <thead>
       <tr>
-        <th>Category</th>
-        <th>Course</th>
-        <th>Status</th>
-        <th>Score</th>
+        <!-- <th>Category</th> -->
+        <th style="width: 90px;" >Course</th>
+        <th style="width: 90px;">Status</th>
+        <th style="width: 90px;">Score</th>
+        <th style="width: 90px;">Action</th>
         
       </tr>
     </thead>
@@ -28,7 +29,7 @@
     </tbody>
 
   </table>
-
+ </div>
   <div class="form-actions">
     <%= f.button :submit , class: 'btn btn-primary' %>
     <%= link_to_add_association 'Add Major Course', f, :education_details, class: 'btn btn-primary' %>

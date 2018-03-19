@@ -5,20 +5,21 @@
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
-
+<div class="row">
+ <div class="col-md-5">
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.email_field :email, autofocus: true ,:style => "width:350px;" %>
   </div>
 
   <div class="field">
     <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
+    <%= f.text_field :first_name,:style => "width:350px;" %>
   </div>
   
   <div class="field">
     <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
+    <%= f.text_field :last_name,:style => "width:350px;" %>
   </div>
 
   <div class="field">
@@ -31,7 +32,7 @@
  <div class="field">
    <%= f.fields_for :company do |builder| %>
     <%= builder.label :company_name %><br />
-    <%= builder.text_field :company_name %>
+    <%= builder.text_field :company_name,:style => "width:350px;" %>
 	<%end%>
   </div>
 
@@ -40,16 +41,18 @@
     <% if @validatable %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <%= f.password_field :password, autocomplete: "off",:style => "width:350px;" %>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <%= f.password_field :password_confirmation, autocomplete: "off",:style => "width:350px;" %>
   </div>
-
+   </div>
+   </div>
+   <br>
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Sign up", class: "btn btn-primary" %>
   </div>
 <% end %>
 
