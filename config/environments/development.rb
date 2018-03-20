@@ -42,14 +42,15 @@ Rails.application.configure do
 
  
   # ActionMailer Config
-  config.action_mailer.default_url_options = { :host => 'shielded-wildwood-86291.herokuapp.com', :protocol => 'https' } 
+  config.action_mailer.default_url_options = { :host => 'shielded-wildwood-86291.herokuapp.com'} 
   # 'localhost:3000' }
   Rails.application.routes.default_url_options[:host] = 'shielded-wildwood-86291.herokuapp.com'
   config.action_mailer.delivery_method = :smtp
 
   
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.smtp_settings = {
+  
+  ActionMailer::Base.smtp_settings.smtp_settings = {
     :user_name => ENV['SENDGRID_USERNAME'],
     :password => ENV['SENDGRID_PASSWORD'],
     :domain => 'heroku.com',
