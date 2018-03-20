@@ -47,7 +47,7 @@ Rails.application.configure do
   Rails.application.routes.default_url_options[:host] = 'https://shielded-wildwood-86291.herokuapp.com'
   config.action_mailer.delivery_method = :smtp
 
-  '''
+  
   config.action_mailer.perform_deliveries = true
   config.action_mailer.smtp_settings = {
     :user_name => ENV['SENDGRID_USERNAME'],
@@ -60,7 +60,7 @@ Rails.application.configure do
   }
 
 
-
+'''
   config.action_mailer.smtp_settings = {
     domain: => 'shielded-wildwood-86291.herokuapp.com',
     address:              'smtp.gmail.com',
