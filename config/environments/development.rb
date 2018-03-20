@@ -59,7 +59,7 @@ Rails.application.configure do
     :enable_starttls_auto => true
   }
 
-'''
+
 
   config.action_mailer.smtp_settings = {
     domain: => 'shielded-wildwood-86291.herokuapp.com',
@@ -70,7 +70,7 @@ Rails.application.configure do
     password:             'johndoe12345',
     authentication:       'plain',
     enable_starttls_auto: true  }
-
+'''
   config.action_mailer.raise_delivery_errors = true
   # Send email in development mode?
   config.action_mailer.perform_deliveries = true
