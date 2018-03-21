@@ -49,13 +49,6 @@ config.log_level = :debug
 # Prepend all log lines with the following tags.
 config.log_tags = [ :request_id ]
 
-config.middleware.use ExceptionNotification::Rack,
-  :email => {
-    :email_prefix => "Subject",
-    :sender_address => %{"notifier" <error@email.com>},
-    :exception_recipients => %w{nagaraj.bettadapura@gmail.com}
-  }
-
 # Use a different cache store in production.
 # config.cache_store = :mem_cache_store
 
