@@ -49,6 +49,13 @@ config.log_level = :debug
 # Prepend all log lines with the following tags.
 config.log_tags = [ :request_id ]
 
+config.middleware.use ExceptionNotification::Rack,
+  :email => {
+    :email_prefix => "Subject",
+    :sender_address => %{"notifier" <error@email.com>},
+    :exception_recipients => %w{nagaraj.bettadapura@gmail.com}
+  }
+
 # Use a different cache store in production.
 # config.cache_store = :mem_cache_store
 
@@ -79,9 +86,9 @@ config.action_mailer.smtp_settings = {
 }
 '''
 # ActionMailer Config
-config.action_mailer.default_url_options = { :host => Rails.application.secrets.domain_name }
+#config.action_mailer.default_url_options = { :host => Rails.application.secrets.domain_name }
 config.action_mailer.delivery_method = :smtp
-config.action_mailer.perform_deliveries = true
+#config.action_mailer.perform_deliveries = true
 config.action_mailer.raise_delivery_errors = false
 
 # ActionMailer Config
