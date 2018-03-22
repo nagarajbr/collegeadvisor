@@ -10,8 +10,8 @@ class InvitationsController < Devise::InvitationsController
       @client = Client.new
       @client.last_name = (params[:user][:last_name]).strip
       @client.first_name = (params[:user][:first_name]).strip
-      @client.created_by = User.where(email: params[:user][:email]).first.id
-      @client.updated_by = User.where(email: params[:user][:email]).first.id
+      @client.created_by = 1 #User.where(email: params[:user][:email]).first.id
+      @client.updated_by = 1 #User.where(email: params[:user][:email]).first.id
       @client.save
     end
   
