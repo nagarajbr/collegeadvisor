@@ -38,7 +38,7 @@ class BatchInvitationsController < ApplicationController
     
     csv.each do |row|
       
-      User.invite!(:email =>  row["Email"])
+      User.invite!(:email =>  row["Email"] , :name => row["First_name"] +' ' + row["Last_name"] )
       User.where(email: row["Email"]).update_all(:company_id => current_user.company_id , :role => 0 , :last_name => row["Last_name"] ,:first_name => row["First_name"])
     @client = Client.where("upper(ltrim(last_name)) = ? and upper(ltrim(first_name)) = ?",(row["Last_name"]).strip.upcase,(row["First_name"]).strip.upcase)  
     if @client.present?
