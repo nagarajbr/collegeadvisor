@@ -7,7 +7,7 @@
    validates_presence_of :description
 
 
-  def self.item_list (domain_id)
+  def self.item_list(domain_id)
 
   	where("id in (?)", domain_id ).order ("description")
 

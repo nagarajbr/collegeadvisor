@@ -1,22 +1,23 @@
 
 <tr class='nested-fields'>
-  <td>
+  <!-- <td>
     <%#= f.collection_select :category, MasterDomain.order(:id),:id,:description, {id: "category_selected" ,class: 'sel_ch' }  %>
+  </td> -->
+  <td width="25%" >
+     <%= f.grouped_collection_select :course, MasterDomain.item_list([2,3,4,5,6,7,8]).order(:id), :master_domain_items, :description, :id, :short_description, {:include_blank => 'Select Course'},{id: "course_selected" , class: "form-control" }   %>
   </td>
-  <td class="short_description">
-     <%= f.grouped_collection_select :course, MasterDomain.order(:id), :master_domain_items, :description, :id, :short_description,  {id: "course_selected" }   %>
+  <td width="25%" >
+      <%= f.select :status, MasterDomainItem.item_list(9).collect { |p| ["#{p.short_description} ", p.id] }, { :include_blank => 'Select Status' } , { id: 'status_selected', class: 'form-control' } %>
   </td>
-  <td class="long_description">
-      <%= f.select :status, MasterDomainItem.item_list(9).collect { |p| ["#{p.short_description} ", p.id] }, { :include_blank => 'Select Course' } , { id: 'status_selected',class: 'form-control' } %>
-  </td>
-   <td class="status">
-    <%= f.text_field :score  %>
+   <td width="15%" >
+    <%= f.text_field :score , class: "form-control" %>
   </td>
    
-  <td class="usage">
+  <td width="35%" >
     <%= link_to_remove_association "remove course", f %>
   </td>
 </tr>
+
 
 
   

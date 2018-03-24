@@ -15,22 +15,22 @@
     <thead>
       <tr>
         <!-- <th>Category</th> -->
-        <th style="width: 90px;" >Course</th>
-        <th style="width: 90px;">Status</th>
-        <th style="width: 90px;">Score</th>
-        <th style="width: 90px;">Action</th>
-        
-      </tr>
+        <th width="25%" >Course</th>
+        <th width="25%"">Status</th>
+        <th width="15%"">Score</th>
+        <th width="35%"">Action</th>
+    </tr>
     </thead>
     <tbody class='items'>
       <%= f.simple_fields_for :education_details do |builder| %>
         <%= render 'education_detail_fields', f: builder %>
       <% end %>
     </tbody>
-
   </table>
  </div>
+ 
   <div class="form-actions">
+ <br>   
     <%= f.button :submit , class: 'btn btn-primary' %>
     <%= link_to_add_association 'Add Major Course', f, :education_details, class: 'btn btn-primary' %>
     <%= link_to educations_path, class: 'btn btn-primary' do %>
