@@ -1,0 +1,29 @@
+<% content_for :title, "Upload a batch of users" %>
+
+<div class="page-title">
+  <h1>Upload a batch of users</h1>
+</div>
+
+
+<div class="well">
+  <%= form_for @batch_invitation do |f| %>
+    <h2>Upload a CSV</h2>
+    <div class="row">
+      <div class="col-md-5">
+        <%= f.label :user_names_and_emails, "Choose a CSV file of users with names and email addresses" %>
+        <%= f.file_field(:user_names_and_emails, :accept => 'text/csv', required: true) %>
+      </div>
+      <div class="col-md-5 pull-right">
+        <p>The format of the CSV should be as follows:</p>
+        <pre>
+          Name,Email
+          Jane Smith,jane@example.com
+          Winston Churchill,winston@example.com
+          </pre>
+        
+        <p class="help-block">Any fields in the CSV other than those shown above will be ignored.</p>
+      </div>
+    </div>
+    <%= f.submit "Create users and send emails", :class => 'btn btn-primary' %>
+  <% end %>
+</div>

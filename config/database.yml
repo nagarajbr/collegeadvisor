@@ -1,0 +1,15 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  #host: tanf-devdb.state.ar.us
+  #database: waaps_development
+  #username: waps_app
+  #password: app_waps
+  host: localhost
+  #username: thirumalgonguntala
+  #password: 
+  database: caddy_cloud
+  username: postgres
+  password: abcd1234
+  pool: 5
+
