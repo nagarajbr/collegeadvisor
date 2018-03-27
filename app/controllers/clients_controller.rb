@@ -8,9 +8,13 @@ class ClientsController < ApplicationController
     if current_user.admin?
      @clients = Client.all#caddy_client
    else
-    @clients = Client.where("created_by = ?", current_user.id)
-
-   end
+     @clients= Client.where("upper(ltrim(last_name)) = ? and upper(ltrim(first_name)) = ?",(current_user.last_name).strip.upcase,(current_user.first_name).strip.upcase)  
+    
+      if @clients.present?
+        session[:student] = @clients.first.id
+      end
+    end
+    
      #@clients = policy_scope(Client)
   end
 

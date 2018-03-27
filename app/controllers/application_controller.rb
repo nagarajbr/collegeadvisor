@@ -16,4 +16,12 @@ class ApplicationController < ActionController::Base
 	  AuditModule.set_current_user=(current_user)
   end
 
+  protected
+    # def after_sign_in_path_for(resource)
+    #   @client = Client.where("upper(ltrim(last_name)) = ? and upper(ltrim(first_name)) = ?",( current_user.last_name).strip.upcase,(current_user.first_name).strip.upcase)  
+    #   if @client.present?
+    #     session[:student] = @client.id
+    #   end
+    # end
+
 end
